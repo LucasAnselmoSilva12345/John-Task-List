@@ -1,40 +1,60 @@
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { Header } from '../components/Header';
 import { TodoTaskShow } from '../components/TodoTaskShow';
 import { TodoTaskListProps } from '../interfaces/interfaces';
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+interface TaskDataProps {
+  id: number;
+  taskName: string;
+}
 
 export function Home() {
-  const [task, setTask] = useState<string>('');
-
+  const [newTaskName, setNewTaskName] = useState<string>('');
   const [todoTaskList, setTodoTaskList] = useState<TodoTaskListProps[]>([]);
 
-  function createTask() {
-    if (task === '') {
-      toast.error(
-        'Oops! It looks like you left an empty field. Please fill in all required fields to continue.'
-      );
-    } else {
-      const generateTaskIDRandom = (num: number) =>
-        Math.floor(Math.random() * num);
-
-      const newTask = {
-        id: generateTaskIDRandom(99999999999),
-        taskName: task,
-      };
-
-      setTodoTaskList([...todoTaskList, newTask]);
-
-      toast.success('Task created with success!');
+  useEffect(() => {
+    const storedTaskList = localStorage.getItem('todoTaskList');
+    if (storedTaskList) {
+      setTodoTaskList(JSON.parse(storedTaskList));
     }
+  }, []);
+
+  const generateRandomID = (): number =>
+    Math.floor(Math.random() * 99999999999);
+
+  function createTask() {
+    if (!newTaskName) {
+      toast.error('Please enter a task before adding.');
+      return;
+    }
+
+    const newTask = {
+      id: generateRandomID(),
+      taskName: newTaskName,
+    };
+
+    setTodoTaskList([...todoTaskList, newTask]);
+    setNewTaskName('');
+    updatedLocalStorage('todoTaskList', [...todoTaskList, newTask]);
+
+    toast.success('Task created successfully!');
   }
 
-  function deleteTask(DeleteTaskById: number): void {
-    setTodoTaskList(
-      todoTaskList.filter((taskName) => taskName.id !== DeleteTaskById)
-    );
+  function handleTaskNameChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setNewTaskName(event?.target.value);
+  }
+
+  function handleDeleteTask(taskId: number): void {
+    const updatedTaskList = todoTaskList.filter((task) => task.id !== taskId);
+    setTodoTaskList(updatedTaskList);
+    updatedLocalStorage('todoTaskList', updatedTaskList);
+  }
+
+  function updatedLocalStorage(key: string, data: TaskDataProps[]) {
+    localStorage.setItem(key, JSON.stringify(data));
   }
 
   return (
@@ -49,7 +69,7 @@ export function Home() {
               className="text-base text-zinc-950 font-medium"
               htmlFor="task"
             >
-              What needs to do now?
+              What needs to be done now?
             </label>
             <input
               type="text"
@@ -58,14 +78,14 @@ export function Home() {
               name="task"
               autoComplete="off"
               placeholder="Write your task"
-              value={task}
-              onChange={(event) => setTask(event.target.value)}
+              value={newTaskName}
+              onChange={handleTaskNameChange}
             />
           </div>
 
           <button
             className="bg-blue-600 text-blue-50 py-3 font-medium border-none rounded"
-            type="submit"
+            type="button"
             onClick={createTask}
           >
             Add task
@@ -73,7 +93,7 @@ export function Home() {
         </section>
 
         {todoTaskList.map((task, key) => (
-          <TodoTaskShow key={key} task={task} deleteTask={deleteTask} />
+          <TodoTaskShow key={key} task={task} deleteTask={handleDeleteTask} />
         ))}
       </main>
     </>
