@@ -40,17 +40,29 @@ export function Home() {
     setNewTaskName('');
     updatedLocalStorage('todoTaskList', [...todoTaskList, newTask]);
 
-    toast.success('Task created successfully!');
+    toast('Task created successfully!');
   }
 
   function handleTaskNameChange(event: React.ChangeEvent<HTMLInputElement>) {
     setNewTaskName(event?.target.value);
   }
 
+  function handleActionByTasks(taskId: number): void {
+    const setUpdatedTaskList = todoTaskList.filter(
+      (task) => task.id !== taskId
+    );
+    setTodoTaskList(setUpdatedTaskList);
+    updatedLocalStorage('todoTaskList', setUpdatedTaskList);
+  }
+
   function handleDeleteTask(taskId: number): void {
-    const updatedTaskList = todoTaskList.filter((task) => task.id !== taskId);
-    setTodoTaskList(updatedTaskList);
-    updatedLocalStorage('todoTaskList', updatedTaskList);
+    handleActionByTasks(taskId);
+    toast.info('Task deleted with successfully!');
+  }
+
+  function handleFinishedTask(taskId: number): void {
+    handleActionByTasks(taskId);
+    toast.success('Congratulations on finished this task!');
   }
 
   function updatedLocalStorage(key: string, data: TaskDataProps[]) {
@@ -93,7 +105,12 @@ export function Home() {
         </section>
 
         {todoTaskList.map((task, key) => (
-          <TodoTaskShow key={key} task={task} deleteTask={handleDeleteTask} />
+          <TodoTaskShow
+            key={key}
+            task={task}
+            deleteTask={handleDeleteTask}
+            finishedTask={handleFinishedTask}
+          />
         ))}
       </main>
     </>
