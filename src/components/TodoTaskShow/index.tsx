@@ -13,9 +13,9 @@ export function TodoTaskShow({
   finishedTask,
 }: TodoTaskShowProps) {
   return (
-    <div className="bg-blue-200 mt-4 py-4 px-2 flex items-center justify-between">
+    <div className="bg-violet-300 mt-4 py-4 px-2 flex items-center justify-between">
       <div>
-        <p className="text-base font-medium text-blue-900">{task.taskName}</p>
+        <p className="text-base font-medium text-zinc-700">{task.taskName}</p>
       </div>
 
       <div className="flex items-center gap-1">
@@ -23,13 +23,13 @@ export function TodoTaskShow({
           className="cursor-pointer text-center text-sm"
           onClick={() => deleteTask(task.id)}
         >
-          <Trash size={16} />
+          <Trash className="text-red-700 hover:opacity-50" size={16} />
         </span>
         <span
           className="cursor-pointer text-center text-sm"
           onClick={() => finishedTask(task.id)}
         >
-          <CheckCircle size={16} />
+          <CheckCircle className="text-violet-800 hover:opacity-50" size={16} />
         </span>
       </div>
     </div>
