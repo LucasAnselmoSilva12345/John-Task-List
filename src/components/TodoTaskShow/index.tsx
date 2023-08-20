@@ -20,12 +20,16 @@ export function TodoTaskShow({
 
       <div className="flex items-center gap-1">
         <span
+          aria-label="Delete this task"
+          role="button"
           className="cursor-pointer text-center text-sm"
           onClick={() => deleteTask(task.id)}
         >
           <Trash className="text-red-700 hover:opacity-50" size={16} />
         </span>
         <span
+          aria-label="Finished this task"
+          role="button"
           className="cursor-pointer text-center text-sm"
           onClick={() => finishedTask(task.id)}
         >

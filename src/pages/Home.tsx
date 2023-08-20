@@ -80,6 +80,7 @@ export function Home() {
         <section className="my-5 flex flex-col">
           <div className="flex flex-col gap-1 mb-4">
             <label
+              id="task"
               className="text-base text-zinc-800 font-medium"
               htmlFor="task"
             >
@@ -90,6 +91,7 @@ export function Home() {
               className="w-full py-4 text-sm text-zinc-800 border-none rounded focus:outline focus:outline-2 focus:outline-violet-400"
               id="task"
               name="task"
+              aria-label="Form input task"
               autoComplete="off"
               placeholder="Go to the supermarket..."
               value={newTaskName}
