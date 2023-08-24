@@ -1,5 +1,7 @@
 import { CheckCircle, Trash } from '@phosphor-icons/react';
 import { TodoTaskListProps } from '../../interfaces/interfaces';
+import { useState } from 'react';
+import { Modal } from '../Modal/Modal';
 
 interface TodoTaskShowProps {
   task: TodoTaskListProps;
@@ -12,6 +14,16 @@ export function TodoTaskShow({
   deleteTask,
   finishedTask,
 }: TodoTaskShowProps) {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  function openModal() {
+    setModalIsOpen(true);
+  }
+
+  function closeModal() {
+    setModalIsOpen(false);
+  }
+
   return (
     <div className="bg-violet-300 mt-4 py-4 px-2 flex items-center justify-between">
       <div>
@@ -35,6 +47,10 @@ export function TodoTaskShow({
         >
           <CheckCircle className="text-violet-800 hover:opacity-50" size={16} />
         </span>
+
+        <button onClick={openModal}>Open Modal</button>
+
+        <Modal isOpen={modalIsOpen} onClose={closeModal} />
       </div>
     </div>
   );
