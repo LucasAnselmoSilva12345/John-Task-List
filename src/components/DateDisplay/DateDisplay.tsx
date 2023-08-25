@@ -6,12 +6,14 @@ export function DateDisplay({ date }: DateDisplayProps) {
   const day = date.getDate();
   const month = date.toLocaleString('default', { month: 'short' });
   const year = date.getFullYear();
+  const currentDate = `${month} ${day}, ${year}`;
 
   return (
-    <div className="flex items-center gap-1 text-sm text-violet-700">
-      <p>{day}</p>
-      <p>{month}</p>
-      <p>{year}</p>
+    <div
+      aria-label={`task-date-${date.toISOString()}`}
+      className="flex items-center text-sm text-violet-700"
+    >
+      <p>{currentDate}</p>
     </div>
   );
 }
