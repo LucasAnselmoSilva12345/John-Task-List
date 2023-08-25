@@ -1,5 +1,6 @@
 import { CheckCircle, Trash } from '@phosphor-icons/react';
 import { TodoTaskListProps } from '../../interfaces/interfaces';
+import { DateDisplay } from '../DateDisplay/DateDisplay';
 
 interface TodoTaskShowProps {
   task: TodoTaskListProps;
@@ -12,11 +13,15 @@ export function TodoTaskShow({
   deleteTask,
   finishedTask,
 }: TodoTaskShowProps) {
+  const currentDate = new Date();
+
   return (
     <div className="bg-violet-300 mt-4 py-4 px-2 flex items-center justify-between">
       <div>
         <p className="text-base font-medium text-zinc-700">{task.taskName}</p>
       </div>
+
+      <DateDisplay date={currentDate} />
 
       <div className="flex items-center gap-1">
         <span
