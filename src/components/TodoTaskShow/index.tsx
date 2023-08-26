@@ -16,9 +16,11 @@ export function TodoTaskShow({
   const currentDate = new Date();
 
   return (
-    <div className="bg-violet-300 mt-4 py-4 px-2 flex items-center justify-between">
+    <div className="bg-violet-300 dark:bg-neutral-700 mt-4 py-4 px-2 flex items-center justify-between">
       <div>
-        <p className="text-base font-medium text-zinc-700">{task.taskName}</p>
+        <p className="text-base font-medium text-zinc-700 dark:text-neutral-300">
+          {task.taskName}
+        </p>
       </div>
 
       <DateDisplay date={currentDate} />
@@ -30,7 +32,10 @@ export function TodoTaskShow({
           className="cursor-pointer text-center text-sm"
           onClick={() => deleteTask(task.id)}
         >
-          <Trash className="text-red-700 hover:opacity-50" size={16} />
+          <Trash
+            className="text-red-700 dark:text-violet-300 hover:opacity-50"
+            size={16}
+          />
         </span>
         <span
           aria-label="Finished this task"
@@ -38,7 +43,10 @@ export function TodoTaskShow({
           className="cursor-pointer text-center text-sm"
           onClick={() => finishedTask(task.id)}
         >
-          <CheckCircle className="text-violet-800 hover:opacity-50" size={16} />
+          <CheckCircle
+            className="text-violet-800 dark:text-violet-300 hover:opacity-50"
+            size={16}
+          />
         </span>
       </div>
     </div>

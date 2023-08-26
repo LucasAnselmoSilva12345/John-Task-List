@@ -7,6 +7,7 @@ import { TodoTaskShow } from '../components/TodoTaskShow';
 import { TodoTaskListProps } from '../interfaces/interfaces';
 import { Plus } from '@phosphor-icons/react';
 import { Separator } from '../components/Separator';
+import { ThemeToggle } from '../components/ThemeToggle/ThemeToggle';
 
 interface TaskDataProps {
   id: number;
@@ -79,13 +80,17 @@ export function Home() {
       <main className="w-4/5 my-0 mx-auto lg:w-1/2">
         <section className="my-5 flex flex-col">
           <div className="flex flex-col gap-1 mb-4">
-            <label
-              id="task"
-              className="text-base text-zinc-800 font-medium"
-              htmlFor="task"
-            >
-              What needs to be done now?
-            </label>
+            <div className="flex items-center justify-between">
+              <label
+                id="task"
+                className="text-base text-neutral-800 dark:text-neutral-300 font-medium"
+                htmlFor="task"
+              >
+                What needs to be done now?
+              </label>
+              <ThemeToggle />
+            </div>
+
             <input
               type="text"
               className="w-full py-4 text-sm text-zinc-800 border-none rounded focus:outline focus:outline-2 focus:outline-violet-400"
@@ -100,7 +105,7 @@ export function Home() {
           </div>
 
           <button
-            className="bg-violet-600 text-blue-50 py-4 flex items-center justify-center gap-1 font-medium border-none rounded hover:opacity-80 focus:outline focus:outline-2 focus:outline-violet-900"
+            className="bg-violet-600 dark:bg-neutral-700 text-blue-50 py-4 flex items-center justify-center gap-1 font-medium border-none rounded hover:opacity-80 focus:outline focus:outline-2 focus:outline-violet-900"
             type="button"
             onClick={createTask}
           >

@@ -11,7 +11,7 @@ export function DateDisplay({ date }: DateDisplayProps) {
   return (
     <div
       aria-label={`task-date-${date.toISOString()}`}
-      className="flex items-center text-sm text-violet-700"
+      className="flex items-center text-sm text-violet-700 dark:text-violet-50"
     >
       <p>{currentDate}</p>
     </div>
