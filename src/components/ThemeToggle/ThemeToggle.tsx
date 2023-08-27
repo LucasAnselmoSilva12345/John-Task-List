@@ -19,7 +19,7 @@ export function ThemeToggle() {
   }
 
   return (
-    <button onClick={toggleTheme}>
+    <button data-testid="changeSwitchTheme" onClick={toggleTheme}>
       {isDarkMode ? (
         <Sun size={20} weight="bold" className="text-yellow-400" />
       ) : (

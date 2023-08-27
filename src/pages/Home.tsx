@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import 'react-toastify/dist/ReactToastify.css';
 
 import { Header } from '../components/Header';
 import { TodoTaskShow } from '../components/TodoTaskShow';
@@ -105,6 +105,7 @@ export function Home() {
           </div>
 
           <button
+            data-testid="createTaskButton"
             className="bg-violet-600 dark:bg-neutral-700 text-blue-50 py-4 flex items-center justify-center gap-1 font-medium border-none rounded hover:opacity-80 focus:outline focus:outline-2 focus:outline-violet-900"
             type="button"
             onClick={createTask}

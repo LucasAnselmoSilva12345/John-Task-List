@@ -27,6 +27,7 @@ export function TodoTaskShow({
 
       <div className="flex items-center gap-1">
         <span
+          data-testid="deleteTaskIcon"
           aria-label="Delete this task"
           role="button"
           className="cursor-pointer text-center text-sm"

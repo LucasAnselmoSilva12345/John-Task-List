@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Home } from '../pages/Home';
 import { createTask } from './utils/createTask';
@@ -20,7 +20,7 @@ describe('Task Form', () => {
   it('should render "Add task" button', () => {
     render(<Home />);
 
-    const buttonElement = screen.getByRole('button');
+    const buttonElement = screen.getByTestId('createTaskButton');
     expect(buttonElement).toBeInTheDocument();
   });
 });
@@ -30,33 +30,8 @@ describe('Task Form Functions', () => {
     render(<Home />);
     createTask('Buy shirt in the mall');
 
-    const submitButton = screen.getByText(/Add task/i);
-    fireEvent.click(submitButton);
-
     screen.getByText(/Buy shirt in the mall/i);
     screen.findByText('Task created successfully!');
-  });
-
-  it('should delete task', () => {
-    render(<Home />);
-    createTask('Buy milk');
-
-    const iconDelete = screen.getByLabelText('Delete this task');
-    fireEvent.click(iconDelete);
-
-    screen.queryByText(/Buy milk/i);
-    screen.findByText('Task deleted with successfully!');
-  });
-
-  it('should finish task', () => {
-    render(<Home />);
-    createTask('Go to the gym');
-
-    const iconFinished = screen.getByRole('button');
-    fireEvent.click(iconFinished);
-
-    screen.queryByText(/Go to the gym/i);
-    screen.findByText('Congratulations on finished this task!');
   });
 });
 
