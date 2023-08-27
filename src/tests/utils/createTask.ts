@@ -5,6 +5,10 @@ export const createTask = (task: string) => {
   fireEvent.change(taskInput, {
     target: { value: `${task}` },
   });
+
   const submitButton = screen.getByText(/Add task/i);
   fireEvent.click(submitButton);
+
+  screen.getByText(task);
+  screen.findByText('Task created successfully!');
 };
