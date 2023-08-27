@@ -4,9 +4,11 @@ This is a to-do list web application, responsible for helping you organize your 
 
 ## Features
 
-✎ – Create task
-✅ – Finish Task
-🗑️ – Delete Task
+🖊 – Create task  
+
+✅ – Finish Task  
+
+🗑️ – Delete Task  
 
 ### Deploy of App
 
