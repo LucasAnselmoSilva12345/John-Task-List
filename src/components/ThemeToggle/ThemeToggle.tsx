@@ -19,11 +19,16 @@ export function ThemeToggle() {
   }
 
   return (
-    <button data-testid="changeSwitchTheme" onClick={toggleTheme}>
+    <button
+      type="button"
+      aria-label="Change app theme"
+      data-testid="changeSwitchTheme"
+      onClick={toggleTheme}
+    >
       {isDarkMode ? (
-        <Sun size={20} weight="bold" className="text-yellow-400" />
+        <Sun size={32} weight="bold" className="text-yellow-400" />
       ) : (
-        <Moon size={20} weight="bold" className="text-black" />
+        <Moon size={32} weight="bold" className="text-black" />
       )}
     </button>
   );

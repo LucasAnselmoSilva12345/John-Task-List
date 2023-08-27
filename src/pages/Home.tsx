@@ -82,7 +82,6 @@ export function Home() {
           <div className="flex flex-col gap-1 mb-4">
             <div className="flex items-center justify-between">
               <label
-                id="task"
                 className="text-base text-neutral-800 dark:text-neutral-300 font-medium"
                 htmlFor="task"
               >
@@ -94,7 +93,6 @@ export function Home() {
             <input
               type="text"
               className="w-full py-4 text-sm text-zinc-800 border-none rounded focus:outline focus:outline-2 focus:outline-violet-400"
-              id="task"
               name="task"
               aria-label="Form input task"
               autoComplete="off"
