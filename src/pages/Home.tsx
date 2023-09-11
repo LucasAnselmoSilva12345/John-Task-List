@@ -8,6 +8,7 @@ import { TodoTaskListProps } from '../interfaces/interfaces';
 import { Plus } from '@phosphor-icons/react';
 import { Separator } from '../components/Separator';
 import { ThemeToggle } from '../components/ThemeToggle/ThemeToggle';
+import { useTranslation } from 'react-i18next';
 
 interface TaskDataProps {
   id: number;
@@ -15,6 +16,8 @@ interface TaskDataProps {
 }
 
 export function Home() {
+  const { t } = useTranslation();
+
   const [newTaskName, setNewTaskName] = useState<string>('');
   const [todoTaskList, setTodoTaskList] = useState<TodoTaskListProps[]>([]);
 
@@ -85,7 +88,7 @@ export function Home() {
                 className="text-base text-neutral-800 dark:text-neutral-300 font-medium"
                 htmlFor="task"
               >
-                What needs to be done now?
+                {t('whatNeedsToBe')}
               </label>
               <ThemeToggle />
             </div>
@@ -96,7 +99,7 @@ export function Home() {
               name="task"
               aria-label="Form input task"
               autoComplete="off"
-              placeholder="Go to the supermarket..."
+              placeholder={t('inputPlaceholderTask')}
               value={newTaskName}
               onChange={handleTaskNameChange}
             />
@@ -108,7 +111,7 @@ export function Home() {
             type="button"
             onClick={createTask}
           >
-            Add task
+            {t('addTask')}
             <Plus className="text-white" size={16} />
           </button>
         </section>
