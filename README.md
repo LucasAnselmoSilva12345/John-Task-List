@@ -10,6 +10,8 @@ This is a to-do list web application, responsible for helping you organize your 
 
 🗑️ – Delete Task  
 
+🗣️ - Switcher Language (English, Spanish, Portuguese)
+
 ### Deploy of App
 
 - [https://john-task-list.pages.dev/](https://john-task-list.pages.dev/)
