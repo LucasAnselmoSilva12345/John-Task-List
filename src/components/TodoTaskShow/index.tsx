@@ -1,5 +1,5 @@
 import { CheckCircle, Trash } from '@phosphor-icons/react';
-import { TodoTaskListProps } from '../../interfaces/interfaces';
+import { TodoTaskListProps } from '../../types/TodoTaskListProps';
 import { DateDisplay } from '../DateDisplay/DateDisplay';
 
 interface TodoTaskShowProps {

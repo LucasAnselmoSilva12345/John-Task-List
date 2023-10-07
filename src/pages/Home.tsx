@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { Header } from '../components/Header';
 import { TodoTaskShow } from '../components/TodoTaskShow';
-import { TodoTaskListProps } from '../interfaces/interfaces';
+import { TodoTaskListProps } from '../types/TodoTaskListProps';
 import { Plus } from '@phosphor-icons/react';
 import { Separator } from '../components/Separator';
 import { ThemeToggle } from '../components/ThemeToggle/ThemeToggle';
