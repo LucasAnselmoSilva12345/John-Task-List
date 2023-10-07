@@ -2,6 +2,7 @@
   "translation": {
     "whatNeedsToBe": "O que precisa ser feito agora?",
     "inputPlaceholderTask": "Ir ao supermercado...",
-    "addTask": "Adicionar tarefa"
+    "addTask": "Adicionar tarefa",
+    "withoutTask": "Nenhuma tarefa criada"
   }
 }
