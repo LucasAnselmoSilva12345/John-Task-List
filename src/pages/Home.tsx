@@ -6,9 +6,10 @@ import { Header } from '../components/Header';
 import { TodoTaskShow } from '../components/TodoTaskShow';
 import { TodoTaskListProps } from '../types/TodoTaskListProps';
 import { Plus } from '@phosphor-icons/react';
-import { Separator } from '../components/Separator';
 import { ThemeToggle } from '../components/ThemeToggle/ThemeToggle';
 import { useTranslation } from 'react-i18next';
+import { Label } from '../components/Label';
+import { Warning } from '../components/Warning';
 
 interface TaskDataProps {
   id: number;
@@ -84,12 +85,7 @@ export function Home() {
         <section className="my-5 flex flex-col">
           <div className="flex flex-col gap-1 mb-4">
             <div className="flex items-center justify-between">
-              <label
-                className="text-base text-neutral-800 dark:text-neutral-300 font-medium"
-                htmlFor="task"
-              >
-                {t('whatNeedsToBe')}
-              </label>
+              <Label htmlFor="task" />
               <ThemeToggle />
             </div>
 
@@ -117,16 +113,18 @@ export function Home() {
           </button>
         </section>
 
-        <Separator />
-
-        {todoTaskList.map((task, key) => (
-          <TodoTaskShow
-            key={key}
-            task={task}
-            deleteTask={handleDeleteTask}
-            finishedTask={handleFinishedTask}
-          />
-        ))}
+        {todoTaskList?.length ? (
+          todoTaskList.map((task, key) => (
+            <TodoTaskShow
+              key={key}
+              task={task}
+              deleteTask={handleDeleteTask}
+              finishedTask={handleFinishedTask}
+            />
+          ))
+        ) : (
+          <Warning />
+        )}
       </main>
     </>
   );
