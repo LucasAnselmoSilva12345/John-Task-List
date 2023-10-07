@@ -1,10 +1,11 @@
 import { useTranslation } from 'react-i18next';
+import { twMerge } from 'tailwind-merge';
+
+interface LanguageSwitcherProps {
+  className?: string;
+}
 
 const languagesOptions = [
-  {
-    name: 'Português',
-    value: 'ptBR',
-  },
   {
     name: 'English',
     value: 'en',
@@ -13,13 +14,19 @@ const languagesOptions = [
     name: 'Español',
     value: 'es',
   },
+  {
+    name: 'Português',
+    value: 'ptBR',
+  },
 ];
 
-export function LanguageSwitcher() {
+export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
   const { i18n } = useTranslation();
 
   return (
-    <div className="flex items-center justify-center gap-2">
+    <div
+      className={twMerge('flex items-center justify-center gap-2', className)}
+    >
       {languagesOptions.map((languageOption) => (
         <button
           key={languageOption.value}
