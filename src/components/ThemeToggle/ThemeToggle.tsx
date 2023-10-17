@@ -1,22 +1,8 @@
-import { useEffect, useState } from 'react';
 import { Moon, Sun } from '@phosphor-icons/react';
+import { Theme } from '../../hook/localStorage/Theme';
 
 export function ThemeToggle() {
-  const savedTheme = localStorage.getItem('theme');
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(savedTheme === 'dark');
-
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-  }, [isDarkMode]);
-
-  function toggleTheme() {
-    setIsDarkMode(!isDarkMode);
-  }
+  const { isDarkMode, toggleTheme } = Theme();
 
   return (
     <button
