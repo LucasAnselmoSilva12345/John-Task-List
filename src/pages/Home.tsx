@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -10,6 +10,7 @@ import { ThemeToggle } from '../components/ThemeToggle/ThemeToggle';
 import { useTranslation } from 'react-i18next';
 import { Label } from '../components/Label';
 import { Warning } from '../components/Warning';
+import { Tasks } from '../hook/localStorage/Tasks';
 
 interface TaskDataProps {
   id: number;
@@ -20,14 +21,10 @@ export function Home() {
   const { t } = useTranslation();
 
   const [newTaskName, setNewTaskName] = useState<string>('');
-  const [todoTaskList, setTodoTaskList] = useState<TodoTaskListProps[]>([]);
-
-  useEffect(() => {
-    const storedTaskList = localStorage.getItem('todoTaskList');
-    if (storedTaskList) {
-      setTodoTaskList(JSON.parse(storedTaskList));
-    }
-  }, []);
+  const [todoTaskList, setTodoTaskList] = Tasks(
+    'todoTaskList',
+    [] as TodoTaskListProps[]
+  );
 
   const generateRandomID = (): number =>
     Math.floor(Math.random() * 99999999999);
@@ -45,8 +42,6 @@ export function Home() {
 
     setTodoTaskList([...todoTaskList, newTask]);
     setNewTaskName('');
-    updatedLocalStorage('todoTaskList', [...todoTaskList, newTask]);
-
     toast('Task created successfully!');
   }
 
@@ -56,10 +51,9 @@ export function Home() {
 
   function handleActionByTasks(taskId: number): void {
     const setUpdatedTaskList = todoTaskList.filter(
-      (task) => task.id !== taskId
+      (task: TaskDataProps) => task.id !== taskId
     );
     setTodoTaskList(setUpdatedTaskList);
-    updatedLocalStorage('todoTaskList', setUpdatedTaskList);
   }
 
   function handleDeleteTask(taskId: number): void {
@@ -70,10 +64,6 @@ export function Home() {
   function handleFinishedTask(taskId: number): void {
     handleActionByTasks(taskId);
     toast.success('Congratulations on finished this task!');
-  }
-
-  function updatedLocalStorage(key: string, data: TaskDataProps[]) {
-    localStorage.setItem(key, JSON.stringify(data));
   }
 
   return (
@@ -114,7 +104,7 @@ export function Home() {
         </section>
 
         {todoTaskList?.length ? (
-          todoTaskList.map((task, key) => (
+          todoTaskList.map((task: TaskDataProps, key: number) => (
             <TodoTaskShow
               key={key}
               task={task}
