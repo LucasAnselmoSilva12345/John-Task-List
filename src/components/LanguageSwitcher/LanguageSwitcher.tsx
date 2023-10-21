@@ -39,7 +39,7 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
         id="languageSelect"
         value={i18n.language}
         onChange={handleLanguageChange}
-        className="bg-none border-none px-2"
+        className="bg-gray-50 border border-violet-800 text-gray-900 text-sm rounded-lg focus:outline-violet-500 focus:border-violet-500 block w-full p-2.5 dark:bg-violet-600 dark:border-violet-600 dark:placeholder-gray-400 dark:text-white dark:focus:outline-neutral-900 dark:focus:border-violet-500"
       >
         {languagesOptions.map((languageOption) => (
           <option key={languageOption.value} value={languageOption.value}>
