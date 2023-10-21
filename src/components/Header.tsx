@@ -28,11 +28,12 @@ export function Header() {
           >
             <Wrench size={26} weight="bold" />
           </button>
-          <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-            <div className="flex flex-col items-center justify-center gap-4">
-              <h1 className="font-semibold text-2xl text-violet-700 dark:text-violet-500">
-                {t('jhlSetting')}
-              </h1>
+          <Modal
+            title={t('jhlSetting')}
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+          >
+            <div className="w-full px-1 flex items-center justify-between">
               <LanguageSwitcher />
               <ThemeToggle />
             </div>
