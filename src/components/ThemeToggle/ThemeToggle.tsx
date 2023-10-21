@@ -10,11 +10,12 @@ export function ThemeToggle() {
       aria-label="Change app theme"
       data-testid="changeSwitchTheme"
       onClick={toggleTheme}
+      className="transition-all duration-200 hover:opacity-50"
     >
       {isDarkMode ? (
-        <Sun size={32} weight="bold" className="text-yellow-400" />
+        <Sun size={32} weight="light" className="text-yellow-300" />
       ) : (
-        <Moon size={32} weight="bold" className="text-black" />
+        <Moon size={32} weight="light" className="text-neutral-500" />
       )}
     </button>
   );

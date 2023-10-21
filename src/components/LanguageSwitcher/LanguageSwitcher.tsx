@@ -42,7 +42,7 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
               textDecoration:
                 i18n.language === languageOption.value ? 'underline' : 'none',
             }}
-            className="text-violet-200 hover:opacity-70"
+            className="text-violet-400 transition-all duration-200 hover:opacity-50"
           >
             {languageOption.name}
           </span>

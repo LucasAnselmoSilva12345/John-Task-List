@@ -3,6 +3,7 @@
     "whatNeedsToBe": "What needs to be done now?",
     "inputPlaceholderTask": "Go to the supermarket...",
     "addTask": "Add task",
-    "withoutTask": "No tasks created"
+    "withoutTask": "No tasks created",
+    "jhlSetting": "John Task List – Settings"
   }
 }

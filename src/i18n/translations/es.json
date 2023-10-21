@@ -3,6 +3,7 @@
     "whatNeedsToBe": "¿Qué hay que hacer ahora?",
     "inputPlaceholderTask": "Ve al supermercado...",
     "addTask": "Agregar tarea",
-    "withoutTask": "No se crearon tareas"
+    "withoutTask": "No se crearon tareas",
+    "jhlSetting": "Configuración – John Task List"
   }
 }
