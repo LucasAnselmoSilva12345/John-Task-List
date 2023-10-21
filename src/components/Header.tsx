@@ -3,8 +3,11 @@ import { LanguageSwitcher } from './LanguageSwitcher/LanguageSwitcher';
 import { Modal } from './Modal';
 import { Wrench } from '@phosphor-icons/react';
 import { ThemeToggle } from './ThemeToggle/ThemeToggle';
+import { useTranslation } from 'react-i18next';
 
 export function Header() {
+  const { t } = useTranslation();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -28,7 +31,7 @@ export function Header() {
           <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
             <div className="flex flex-col items-center justify-center gap-4">
               <h1 className="font-semibold text-2xl text-violet-700 dark:text-violet-500">
-                John Task List Settings
+                {t('jhlSetting')}
               </h1>
               <LanguageSwitcher />
               <ThemeToggle />
