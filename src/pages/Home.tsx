@@ -6,7 +6,6 @@ import { Header } from '../components/Header';
 import { TodoTaskShow } from '../components/TodoTaskShow';
 import { TodoTaskListProps } from '../types/TodoTaskListProps';
 import { Plus } from '@phosphor-icons/react';
-import { ThemeToggle } from '../components/ThemeToggle/ThemeToggle';
 import { useTranslation } from 'react-i18next';
 import { Label } from '../components/Label';
 import { Warning } from '../components/Warning';
@@ -76,7 +75,6 @@ export function Home() {
           <div className="flex flex-col gap-1 mb-4">
             <div className="flex items-center justify-between">
               <Label htmlFor="task" />
-              <ThemeToggle />
             </div>
 
             <input
