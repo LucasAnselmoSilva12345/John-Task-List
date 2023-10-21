@@ -24,9 +24,13 @@ export function Header() {
             <Wrench size={26} weight="bold" />
           </button>
           <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-            <h1>Model aberto</h1>
-            <LanguageSwitcher />
-            <ThemeToggle />
+            <div className="flex flex-col items-center justify-center gap-4">
+              <h1 className="font-semibold text-2xl text-violet-700 dark:text-violet-500">
+                John Task List Settings
+              </h1>
+              <LanguageSwitcher />
+              <ThemeToggle />
+            </div>
           </Modal>
         </div>
       </div>
