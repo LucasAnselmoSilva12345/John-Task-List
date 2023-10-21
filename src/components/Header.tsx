@@ -18,8 +18,10 @@ export function Header() {
           </div>
 
           <button
+            id="open-modal-settings"
             className="text-purple-200 transition-all duration-200 hover:opacity-50 cursor-pointer"
             onClick={() => setIsModalOpen(true)}
+            aria-label="Open modal settings"
           >
             <Wrench size={26} weight="bold" />
           </button>
