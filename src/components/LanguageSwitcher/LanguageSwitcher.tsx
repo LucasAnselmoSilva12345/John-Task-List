@@ -23,31 +23,30 @@ const languagesOptions = [
 export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
   const { i18n } = useTranslation();
 
+  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedLanguage = e.target.value;
+    i18n.changeLanguage(selectedLanguage);
+  };
+
   return (
     <div
       className={twMerge('flex items-center justify-center gap-2', className)}
     >
-      {languagesOptions.map((languageOption) => (
-        <button
-          key={languageOption.value}
-          onClick={() => {
-            i18n.changeLanguage(languageOption.value);
-          }}
-          className="bg-none border-none px-2"
-        >
-          <span
-            style={{
-              fontWeight:
-                i18n.language === languageOption.value ? 'bold' : 'normal',
-              textDecoration:
-                i18n.language === languageOption.value ? 'underline' : 'none',
-            }}
-            className="text-violet-400 transition-all duration-200 hover:opacity-50"
-          >
+      <label htmlFor="languageSelect" className="sr-only">
+        Select Language
+      </label>
+      <select
+        id="languageSelect"
+        value={i18n.language}
+        onChange={handleLanguageChange}
+        className="bg-none border-none px-2"
+      >
+        {languagesOptions.map((languageOption) => (
+          <option key={languageOption.value} value={languageOption.value}>
             {languageOption.name}
-          </span>
-        </button>
-      ))}
+          </option>
+        ))}
+      </select>
     </div>
   );
 }
