@@ -5,14 +5,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Header } from '../components/Header';
 import { TodoTaskShow } from '../components/TodoTaskShow';
 import { TodoTaskListProps } from '../types/TodoTaskListProps';
-import { Plus } from '@phosphor-icons/react';
-import { useTranslation } from 'react-i18next';
 import { Warning } from '../components/Warning';
 import { Tasks } from '../hook/localStorage/Tasks';
 
 import { TOAST_MESSAGES } from '../toastMessages/toastMessages';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 
 interface TaskDataProps {
   id: number;
@@ -20,8 +19,6 @@ interface TaskDataProps {
 }
 
 export function Home() {
-  const { t } = useTranslation();
-
   const [newTaskName, setNewTaskName] = useState<string>('');
   const [todoTaskList, setTodoTaskList] = Tasks(
     'todoTaskList',
@@ -92,15 +89,9 @@ export function Home() {
             />
           </div>
 
-          <button
-            data-testid="createTaskButton"
-            className="bg-violet-600 dark:bg-neutral-700 text-blue-50 py-4 flex items-center justify-center gap-1 font-medium border-none rounded hover:opacity-80 focus:outline focus:outline-2 focus:outline-violet-900"
-            type="button"
-            onClick={createTask}
-          >
-            {t('addTask')}
-            <Plus className="text-white" size={16} />
-          </button>
+          <Button type="button" onClick={createTask}>
+            Create new task
+          </Button>
         </section>
 
         {todoTaskList?.length ? (
