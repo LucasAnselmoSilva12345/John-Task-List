@@ -12,6 +12,7 @@ import { Tasks } from '../hook/localStorage/Tasks';
 
 import { TOAST_MESSAGES } from '../toastMessages/toastMessages';
 import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
 
 interface TaskDataProps {
   id: number;
@@ -75,20 +76,17 @@ export function Home() {
       <main className="w-4/5 my-0 mx-auto lg:w-1/2">
         <section className="my-5 flex flex-col">
           <div className="flex flex-col gap-1 mb-4">
-            <div className="flex items-center justify-between">
-              <Label htmlFor="task" className="text-base font-medium">
-                What's the next task?
-              </Label>
-            </div>
+            <Label htmlFor="task" className="text-base font-medium">
+              What's the next task?
+            </Label>
 
-            <input
+            <Input
               type="text"
               id="task"
-              className="w-full py-4 text-sm text-zinc-800 border-none rounded focus:outline-2 focus:outline-violet-400"
               name="task"
-              aria-label="Form input task"
+              className="w-full py-4 text-sm text-zinc-800 border-none rounded focus:outline-2 focus:outline-violet-400"
               autoComplete="off"
-              placeholder={t('inputPlaceholderTask')}
+              placeholder="It's necessary buy the new car"
               value={newTaskName}
               onChange={handleTaskNameChange}
             />
