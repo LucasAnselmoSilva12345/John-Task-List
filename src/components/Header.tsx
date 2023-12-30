@@ -1,3 +1,5 @@
+import { ModeToggle } from './mode-toggle';
+
 export function Header() {
   return (
     <header className="bg-violet-500 shadow dark:bg-neutral-900 ">
@@ -8,6 +10,7 @@ export function Header() {
               John Task List
             </h1>
           </div>
+          <ModeToggle />
         </div>
       </div>
     </header>
