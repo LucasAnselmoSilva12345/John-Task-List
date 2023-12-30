@@ -7,11 +7,11 @@ import { TodoTaskShow } from '../components/TodoTaskShow';
 import { TodoTaskListProps } from '../types/TodoTaskListProps';
 import { Plus } from '@phosphor-icons/react';
 import { useTranslation } from 'react-i18next';
-import { Label } from '../components/Label';
 import { Warning } from '../components/Warning';
 import { Tasks } from '../hook/localStorage/Tasks';
 
 import { TOAST_MESSAGES } from '../toastMessages/toastMessages';
+import { Label } from '@/components/ui/label';
 
 interface TaskDataProps {
   id: number;
@@ -76,7 +76,9 @@ export function Home() {
         <section className="my-5 flex flex-col">
           <div className="flex flex-col gap-1 mb-4">
             <div className="flex items-center justify-between">
-              <Label htmlFor="task" />
+              <Label htmlFor="task" className="text-base font-medium">
+                What's the next task?
+              </Label>
             </div>
 
             <input
