@@ -3,7 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { Header } from '../components/Header';
-import { TodoTaskShow } from '../components/TodoTaskShow';
+import { TodoTaskShow } from '../components/TodoTaskShow/TodoTaskShow';
 import { TodoTaskListProps } from '../types/TodoTaskListProps';
 import { Warning } from '../components/Warning';
 import { Tasks } from '../hook/localStorage/Tasks';
@@ -73,7 +73,10 @@ export function Home() {
       <main className="w-4/5 my-0 mx-auto lg:w-1/2">
         <section className="my-5 flex flex-col">
           <div className="flex flex-col gap-1 mb-4">
-            <Label htmlFor="task" className="text-base font-medium">
+            <Label
+              htmlFor="task"
+              className="text-base text-secondary-foreground font-semibold"
+            >
               What's the next task?
             </Label>
 
@@ -81,7 +84,7 @@ export function Home() {
               type="text"
               id="task"
               name="task"
-              className="w-full py-4 text-sm text-zinc-800 border-none rounded focus:outline-2 focus:outline-violet-400"
+              className="w-full bg-input border-border text-secondary-foreground"
               autoComplete="off"
               placeholder="It's necessary buy the new car"
               value={newTaskName}
@@ -89,7 +92,11 @@ export function Home() {
             />
           </div>
 
-          <Button type="button" onClick={createTask}>
+          <Button
+            type="button"
+            className="p-6 font-medium"
+            onClick={createTask}
+          >
             Create new task
           </Button>
         </section>
