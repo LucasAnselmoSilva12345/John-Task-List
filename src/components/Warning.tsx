@@ -5,8 +5,8 @@ export function Warning() {
 
   return (
     <div className="space-y-1">
-      <div className="w-full h-1 bg-violet-200" />
-      <span className="text-violet-300 block text-center">
+      <div className="w-full h-1 bg-muted" />
+      <span className="text-muted-foreground block text-center">
         {t('withoutTask')}
       </span>
     </div>

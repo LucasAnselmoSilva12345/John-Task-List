@@ -3,15 +3,15 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { Header } from '../components/Header';
-import { TodoTaskShow } from '../components/TodoTaskShow';
+import { TodoTaskShow } from '../components/TodoTaskShow/TodoTaskShow';
 import { TodoTaskListProps } from '../types/TodoTaskListProps';
-import { Plus } from '@phosphor-icons/react';
-import { useTranslation } from 'react-i18next';
-import { Label } from '../components/Label';
 import { Warning } from '../components/Warning';
 import { Tasks } from '../hook/localStorage/Tasks';
 
 import { TOAST_MESSAGES } from '../toastMessages/toastMessages';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 
 interface TaskDataProps {
   id: number;
@@ -19,8 +19,6 @@ interface TaskDataProps {
 }
 
 export function Home() {
-  const { t } = useTranslation();
-
   const [newTaskName, setNewTaskName] = useState<string>('');
   const [todoTaskList, setTodoTaskList] = Tasks(
     'todoTaskList',
@@ -75,32 +73,32 @@ export function Home() {
       <main className="w-4/5 my-0 mx-auto lg:w-1/2">
         <section className="my-5 flex flex-col">
           <div className="flex flex-col gap-1 mb-4">
-            <div className="flex items-center justify-between">
-              <Label htmlFor="task" />
-            </div>
+            <Label
+              htmlFor="task"
+              className="text-base text-secondary-foreground font-semibold"
+            >
+              What's the next task?
+            </Label>
 
-            <input
+            <Input
               type="text"
               id="task"
-              className="w-full py-4 text-sm text-zinc-800 border-none rounded focus:outline-2 focus:outline-violet-400"
               name="task"
-              aria-label="Form input task"
+              className="w-full bg-input border-border text-secondary-foreground"
               autoComplete="off"
-              placeholder={t('inputPlaceholderTask')}
+              placeholder="It's necessary buy the new car"
               value={newTaskName}
               onChange={handleTaskNameChange}
             />
           </div>
 
-          <button
-            data-testid="createTaskButton"
-            className="bg-violet-600 dark:bg-neutral-700 text-blue-50 py-4 flex items-center justify-center gap-1 font-medium border-none rounded hover:opacity-80 focus:outline focus:outline-2 focus:outline-violet-900"
+          <Button
             type="button"
+            className="p-6 font-medium"
             onClick={createTask}
           >
-            {t('addTask')}
-            <Plus className="text-white" size={16} />
-          </button>
+            Create new task
+          </Button>
         </section>
 
         {todoTaskList?.length ? (
