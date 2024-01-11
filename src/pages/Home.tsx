@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-import { Header } from '../components/Header';
-import { TodoTaskShow } from '../components/TodoTaskShow/TodoTaskShow';
-import { TodoTaskListProps } from '../types/TodoTaskListProps';
-import { Warning } from '../components/Warning';
-import { Tasks } from '../hook/localStorage/Tasks';
+import { Header } from '@/components/Header';
+import { TodoTaskShow } from '@/components/TodoTaskShow/TodoTaskShow';
+import { TodoTaskListProps } from '@/types/TodoTaskListProps';
+import { Warning } from '@/components/Warning';
+import { Tasks } from '@/hook/localStorage/Tasks';
 
-import { todoMessages } from '../toastMessages/toastMessages';
+import { todoMessages } from '@/toastMessages/toastMessages';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
