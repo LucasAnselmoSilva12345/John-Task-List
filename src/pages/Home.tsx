@@ -6,7 +6,7 @@ import { TodoTaskListProps } from '../types/TodoTaskListProps';
 import { Warning } from '../components/Warning';
 import { Tasks } from '../hook/localStorage/Tasks';
 
-import { TOAST_MESSAGES } from '../toastMessages/toastMessages';
+import { todoMessages } from '../toastMessages/toastMessages';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -29,7 +29,7 @@ export function Home() {
 
   function createTask() {
     if (!newTaskName) {
-      toast.warning(TOAST_MESSAGES.pleaseEnterTask);
+      toast.error(todoMessages.PLEASE_ENTER_TASK);
       return;
     }
 
@@ -40,7 +40,7 @@ export function Home() {
 
     setTodoTaskList([...todoTaskList, newTask]);
     setNewTaskName('');
-    toast.info(TOAST_MESSAGES.taskCreated);
+    toast.info(todoMessages.TASK_CREATED);
   }
 
   function handleTaskNameChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -56,12 +56,12 @@ export function Home() {
 
   function handleDeleteTask(taskId: number): void {
     handleActionByTasks(taskId);
-    toast.error(TOAST_MESSAGES.taskDeleted);
+    toast.warning(todoMessages.TASK_DELETED);
   }
 
   function handleFinishedTask(taskId: number): void {
     handleActionByTasks(taskId);
-    toast.success(TOAST_MESSAGES.taskSuccess);
+    toast.success(todoMessages.TASK_SUCCESS);
   }
 
   return (

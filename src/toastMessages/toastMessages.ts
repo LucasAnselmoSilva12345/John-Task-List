@@ -1,13 +1,13 @@
 interface ToastMessageProps {
-  pleaseEnterTask: string;
-  taskCreated: string;
-  taskDeleted: string;
-  taskSuccess: string;
+  PLEASE_ENTER_TASK: string;
+  TASK_CREATED: string;
+  TASK_DELETED: string;
+  TASK_SUCCESS: string;
 }
 
-export const TOAST_MESSAGES: ToastMessageProps = {
-  pleaseEnterTask: 'Please enter a task before adding.',
-  taskCreated: 'Task created successfully!',
-  taskDeleted: 'Task deleted with successfully!',
-  taskSuccess: 'Congratulations on finished this task!',
+export const todoMessages: ToastMessageProps = {
+  PLEASE_ENTER_TASK: 'Please enter a task before adding.',
+  TASK_CREATED: 'Task created successfully!',
+  TASK_DELETED: 'Task deleted successfully!',
+  TASK_SUCCESS: 'Congratulations on finishing this task!',
 };
