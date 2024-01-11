@@ -9,8 +9,10 @@
     /* shadcn/UI */
     "baseUrl": ".",
     "paths": {
+      "@/pages/*": ["src/pages/*"],
+      "@/components/*": ["src/components/*"],
       "@/*": [
-        "./src/*"
+        "src/*"
       ]
     },
 

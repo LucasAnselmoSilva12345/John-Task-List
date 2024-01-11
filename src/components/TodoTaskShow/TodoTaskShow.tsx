@@ -1,5 +1,5 @@
 import { TodoTaskListProps } from '../../types/TodoTaskListProps';
-import { DateDisplay } from '../DateDisplay/DateDisplay';
+import { DateDisplay } from '@/components/DateDisplay/DateDisplay';
 import {
   Card,
   CardContent,
