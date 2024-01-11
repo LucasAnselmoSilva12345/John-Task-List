@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 import { Header } from '../components/Header';
 import { TodoTaskShow } from '../components/TodoTaskShow/TodoTaskShow';
@@ -8,10 +6,11 @@ import { TodoTaskListProps } from '../types/TodoTaskListProps';
 import { Warning } from '../components/Warning';
 import { Tasks } from '../hook/localStorage/Tasks';
 
-import { TOAST_MESSAGES } from '../toastMessages/toastMessages';
+import { todoMessages } from '../toastMessages/toastMessages';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { toast } from 'sonner';
 
 interface TaskDataProps {
   id: number;
@@ -30,7 +29,7 @@ export function Home() {
 
   function createTask() {
     if (!newTaskName) {
-      toast.error(TOAST_MESSAGES.pleaseEnterTask);
+      toast.error(todoMessages.PLEASE_ENTER_TASK);
       return;
     }
 
@@ -41,7 +40,7 @@ export function Home() {
 
     setTodoTaskList([...todoTaskList, newTask]);
     setNewTaskName('');
-    toast(TOAST_MESSAGES.taskCreated);
+    toast.info(todoMessages.TASK_CREATED);
   }
 
   function handleTaskNameChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -57,18 +56,16 @@ export function Home() {
 
   function handleDeleteTask(taskId: number): void {
     handleActionByTasks(taskId);
-    toast.info(TOAST_MESSAGES.taskDeleted);
+    toast.warning(todoMessages.TASK_DELETED);
   }
 
   function handleFinishedTask(taskId: number): void {
     handleActionByTasks(taskId);
-    toast.success(TOAST_MESSAGES.taskSuccess);
+    toast.success(todoMessages.TASK_SUCCESS);
   }
 
   return (
     <>
-      <ToastContainer autoClose={3000} />
-
       <Header />
       <main className="w-4/5 my-0 mx-auto lg:w-1/2">
         <section className="my-5 flex flex-col">
