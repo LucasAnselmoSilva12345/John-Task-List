@@ -1,12 +1,12 @@
-import { TodoTaskListProps } from '../../types/TodoTaskListProps';
-import { DateDisplay } from '../../components/DateDisplay/DateDisplay';
+import { TodoTaskListProps } from '../types/TodoTaskListProps';
+import { DateDisplay } from './DateDisplay';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '../ui/card';
+} from './ui/card';
 import { CheckCircle2, Trash } from 'lucide-react';
 
 interface TodoTaskShowProps {
