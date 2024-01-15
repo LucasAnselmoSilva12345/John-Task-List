@@ -1,14 +1,20 @@
 import { fireEvent, screen } from '@testing-library/react';
 
-export const createTask = (task: string) => {
-  const taskInput = screen.getByLabelText('Form input task');
-  fireEvent.change(taskInput, {
-    target: { value: `${task}` },
+export const createTask = (nameTask: string) => {
+  const inputTask = screen.getByRole('textbox', { name: 'Insert-New-Task' });
+
+  fireEvent.change(inputTask, {
+    target: { value: `${nameTask}` },
   });
 
-  const submitButton = screen.getByText(/Add task/i);
-  fireEvent.click(submitButton);
+  const buttonCreateNewTask = screen.getByRole('button', {
+    name: 'Button-Create-New-Task',
+  });
+  fireEvent.click(buttonCreateNewTask);
 
-  screen.getByText(task);
-  screen.findByText('Task created successfully!');
+  fireEvent.change(inputTask, {
+    target: { value: `` },
+  });
+
+  screen.getByText(nameTask);
 };

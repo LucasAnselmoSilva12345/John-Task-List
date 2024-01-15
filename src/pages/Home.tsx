@@ -93,6 +93,7 @@ export function Home() {
           <Button
             type="button"
             className="p-6 font-medium"
+            aria-label="Button-Create-New-Task"
             onClick={createTask}
           >
             Create new task
