@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 
-import { Header } from '@/components/Header';
-import { TodoTaskShow } from '@/components/TodoTaskShow/TodoTaskShow';
-import { TodoTaskListProps } from '@/types/TodoTaskListProps';
-import { Warning } from '@/components/Warning';
-import { Tasks } from '@/hook/localStorage/Tasks';
+import { Header } from '../components/Header';
+import { TodoTaskShow } from '../components/TodoTaskShow/TodoTaskShow';
+import { TodoTaskListProps } from '../types/TodoTaskListProps';
+import { Warning } from '../components/Warning';
+import { Tasks } from '../hook/localStorage/Tasks';
 
-import { todoMessages } from '@/toastMessages/toastMessages';
-import { Label } from '@/components/ui/label';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
+import { todoMessages } from '../toastMessages/toastMessages';
+import { Label } from '../components/ui/label';
+import { Input } from '../components/ui/input';
+import { Button } from '../components/ui/button';
 import { toast } from 'sonner';
 
 interface TaskDataProps {
@@ -84,6 +84,7 @@ export function Home() {
               className="w-full bg-input border-border text-secondary-foreground"
               autoComplete="off"
               placeholder="It's necessary buy the new car"
+              aria-label="Insert-New-Task"
               value={newTaskName}
               onChange={handleTaskNameChange}
             />
