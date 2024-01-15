@@ -8,7 +8,9 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "test:managerTask": "jest src/tests/ManagerTask.spec.tsx --watchAll",
+    "test:modetoggletheme": "jest src/tests/ModeToggle.spec.tsx --watchAll"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.0.10",

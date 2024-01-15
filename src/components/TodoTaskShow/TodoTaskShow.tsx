@@ -1,5 +1,5 @@
 import { TodoTaskListProps } from '../../types/TodoTaskListProps';
-import { DateDisplay } from '@/components/DateDisplay/DateDisplay';
+import { DateDisplay } from '../../components/DateDisplay/DateDisplay';
 import {
   Card,
   CardContent,
@@ -32,7 +32,7 @@ export function TodoTaskShow({
           <CardDescription className="flex items-center justify-end space-x-1">
             <span
               data-testid="deleteTaskIcon"
-              aria-label="Delete this task"
+              aria-label="Delete-this-task"
               role="button"
               className="cursor-pointer text-center text-sm"
               onClick={() => deleteTask(task.id)}
@@ -43,6 +43,7 @@ export function TodoTaskShow({
               />
             </span>
             <span
+              data-testid="finishedTaskIcon"
               aria-label="Finished this task"
               role="button"
               className="cursor-pointer text-center text-sm"
