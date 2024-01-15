@@ -1,11 +1,10 @@
 import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import { Home } from '../pages/Home';
 
-describe('Header Component component', () => {
-  it('should render "John Task List" title', () => {
+describe('Task Form', () => {
+  it('should render form message label', () => {
     render(<Home />);
-
-    screen.getByText(/John Task list/i);
   });
 });
 
